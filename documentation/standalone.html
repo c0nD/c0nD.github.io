@@ -115,6 +115,7 @@
 <li><code>/delete_boss</code> - Deletes the current boss in the channel. Removes all hits linked to the current boss as well.</li>
 <li><code>/insert_boss [guild] [level] [hp]</code> - Usage same as <code>/create_boss</code>, but <code>guild</code>, <code>level</code>, and <code>hp</code> can all be specified upon creation.</li>
 <li><code>/send_csv</code> - Sends a sorted .csv file to </li>
+<li><code>/send_backup_csv</code> - Sends a sorted .csv file after backup json file is loaded.</li>
 <li><code>/load_json</code> - Will load the current JSON backup file into the bosses dictionary. Note: this will not make the previously saved bosses hittable. Check usage for more information.</li>
 </ul>
 <h1 id="usage">Usage</h1>
@@ -169,11 +170,11 @@ these admin prefixed commands.</p>
 most likely be used at the end of each season. This data can then be sorted in
 Google Sheets or Microsoft Excel.
 <br/><br/>
-<strong>(EMERGENCY COMMAND)</strong><br/>
+<strong>(EMERGENCY COMMANDS)</strong><br/>
 The command <code>/load_json</code> should only be used in a <em>very specific scenario</em>. This command will
 take the last loaded backup of the database and load it into the <code>boss_dictionary</code> so that you
-can call <code>/send_csv</code> to get the data before the bot went down. After you use <code>/load_json</code>
-you should use <code>/send_csv</code> to get the data from before the crash. (<em>Note that this
+can call <code>/send_backup_csv</code> to get the data before the bot went down. After you use <code>/load_json</code>
+you should use <code>/send_backup_csv</code> to get the data from before the crash. (<em>Note that this
 will not set up the bosses in the channel -- you will need to use <code>/insert_boss [guild] [level] [hp]</code> in order to
 set up the current boss(es).</em>)</p></div>
             </div>
@@ -181,7 +182,7 @@ set up the current boss(es).</em>)</p></div>
 
         <footer class="col-md-12">
             <hr/>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+            <p>BOT powered by <a href="https://c0nD.dev/">c0nD</a>.</p>
         </footer>
         <script>
             var base_url = ".",
