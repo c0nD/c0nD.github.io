@@ -111,6 +111,7 @@
 <li><code>/admin_hit [damage]</code> - Hits the boss for <code>damage</code> HP. (Does <em>not</em> count as a real hit)</li>
 <li><code>/admin_kill</code> - Kills the boss and increments level. (Does <em>not</em> count as a real hit)</li>
 <li><code>/admin_revive</code> - Revives the boss and decrements the level. (Does <em>not</em> count as a real hit)</li>
+<li><code>/insert_hit [user_id] [damage] [split]</code> - Inserts a hit for another user</li>
 <li><code>/create_boss [guild]</code> - Creates a boss tied to the current text channel with a <code>guild</code> attribute from the guild family. Initializes boss to max hp of a level 1 boss.</li>
 <li><code>/delete_boss</code> - Deletes the current boss in the channel. Removes all hits linked to the current boss as well.</li>
 <li><code>/insert_boss [guild] [level] [hp]</code> - Usage same as <code>/create_boss</code>, but <code>guild</code>, <code>level</code>, and <code>hp</code> can all be specified upon creation.</li>
@@ -160,11 +161,13 @@ boss at a specific state. <strong><em>DO NOT USE IT TO CHANGE THE HP/LEVEL -- PL
 COMMANDS TO CHANGE THE HP OR LEVEL. USING IT TO CHANGE STATS WILL RESULT IN ALL HIT DATA BEING LOST FOR THAT BOSS.</em></strong></p>
 <p>Using <code>/delete_boss</code> will delete the boss from the channel along with all data attached to it (ie. hits).
 When a season is done, you will want to delete all bosses from their respective channels and recreate them.</p>
-<h3 id="admin-prefixed-commands">Admin Prefixed Commands</h3>
+<h3 id="admin-prefixed-commands">Admin Prefixed Commands + Inserting a hit</h3>
 <p>Admin prefixed commands (<code>/admin_hit</code>, <code>/admin_kill</code>) work exactly the same as their non-admin prefixed counterparts (<code>/hit</code> and <code>/killed</code>)
 with the exception that it will <strong>not</strong> log a hit in the hit list attached to the boss. <code>/admin_revive</code> will restore the boss
 at the previous level. If someone accidentally killed the boss, you can revive the boss and hit it down to the correct hp with
-these admin prefixed commands.</p>
+these admin prefixed commands. If someone needs a hit inserted for them that you would like to be recorded, you can insert one for them using
+<code>/insert_hit [user_id] [damage] [split]</code> . Grab their discord user id (using developer mode in discord), and insert the damage
+you'd like for them to have, as well as a true/false value for if the hit was split or not.</p>
 <h3 id="data-aggregation">Data Aggregation</h3>
 <p><code>/send_csv</code> will send a CSV file containing sorted data from <em>all</em> bosses. This will
 most likely be used at the end of each season. This data can then be sorted in
