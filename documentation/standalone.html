@@ -162,7 +162,8 @@ COMMANDS TO CHANGE THE HP OR LEVEL. USING IT TO CHANGE STATS WILL RESULT IN ALL 
 <p>Using <code>/delete_boss</code> will delete the boss from the channel along with all data attached to it (ie. hits).
 When a season is done, you will want to delete all bosses from their respective channels and recreate them.</p>
 <h3 id="admin-prefixed-commands">Admin Prefixed Commands + Inserting a hit</h3>
-<p>Admin prefixed commands (<code>/admin_hit</code>, <code>/admin_kill</code>) work exactly the same as their non-admin prefixed counterparts (<code>/hit</code> and <code>/killed</code>)
+<p>Admin prefixed commands (<code>/admin_hit</code>, <code>/admin_kill</code>) work exactly the same as their non-admin prefixed counterparts (note that
+admin_hit can also accept negative numbers to heal the boss)(<code>/hit</code> and <code>/killed</code>)
 with the exception that it will <strong>not</strong> log a hit in the hit list attached to the boss. <code>/admin_revive</code> will restore the boss
 at the previous level. If someone accidentally killed the boss, you can revive the boss and hit it down to the correct hp with
 these admin prefixed commands. If someone needs a hit inserted for them that you would like to be recorded, you can insert one for them using
