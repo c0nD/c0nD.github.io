@@ -118,6 +118,8 @@
 <li><code>/send_csv</code> - Sends a sorted .csv file to </li>
 <li><code>/send_backup_csv</code> - Sends a sorted .csv file after backup json file is loaded.</li>
 <li><code>/load_json</code> - Will load the current JSON backup file into the bosses dictionary. Note: this will not make the previously saved bosses hittable. Check usage for more information.</li>
+<li><code>/insert_hit [user_id] [damage] [ticket_used]</code> - Inserts a hit for a specific user.</li>
+<li><code>/insert_kill [user_id] [ticket_used] [split]</code> - Inserts a kill for a specific user.</li>                           
 </ul>
 <h1 id="usage">Usage</h1>
 <hr/>
@@ -166,10 +168,10 @@ When a season is done, you will want to delete all bosses from their respective 
 admin_hit can also accept negative numbers to heal the boss)(<code>/hit</code> and <code>/killed</code>)
 with the exception that it will <strong>not</strong> log a hit in the hit list attached to the boss. <code>/admin_revive</code> will restore the boss
 at the previous level. If someone accidentally killed the boss, you can revive the boss and hit it down to the correct hp with
-these admin prefixed commands. If someone needs a hit inserted for them that you would like to be recorded, you can insert one for them using
-<code>/insert_hit [user_id] [damage] [split]</code> . Grab their discord user id (using developer mode in discord -- right click their profile
-in the side bar and click 'Copy ID'), and insert the damage
-you'd like for them to have, as well as a true/false value for if the hit was split or not.</p>
+these admin prefixed commands. If someone needs a hit or kill inserted for them that you would like to be recorded, you can insert one for them using
+<code>/insert_hit [user_id] [damage] [split]</code> or <code>/insert_kill [user_id] [ticket_used] [split]</code>. Grab their discord user id (using developer mode in discord -- right click their profile
+in the side bar and click 'Copy ID'), and insert the damage/kilk
+        you'd like for them to have, as well as a <code>true/false</code> value for if the hit was split or not and if a ticket was used.</p>
 <h3 id="data-aggregation">Data Aggregation</h3>
 <p><code>/send_csv</code> will send a CSV file containing sorted data from <em>all</em> bosses. This will
 most likely be used at the end of each season. This data can then be sorted in
