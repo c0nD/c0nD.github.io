@@ -74,8 +74,7 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a class="nav-link" href="#commands">Commands</a>
-              <ul class="nav flex-column">
+            <li class="nav-item" data-level="1"><a class="nav-link" href="#commands">Commands</a>              <ul class="nav flex-column">
               </ul>
             </li>
             
@@ -94,9 +93,36 @@
 
 <h1 id="crk-guild-battle-bot-usage-documentation">CRK Guild Battle BOT: Usage Documentation</h1>
 <p>Check out our <a href="https://www.onioncult.com">community webpage</a>!</p>
-<h1 id="commands">Commands</h1>
-<hr/>
+<h1 id="introduction">Introduction</h1>   
+<hr/>  
+<ul>
+ Welcome to the documentation page of the Fluffy! This is an open source Discord bot that allows users to keep track of their hits for Cookie Run Kingdom.
+The bot is designed to streamline the process of tracking hits and provides accurate and real-time data to the leaders.
+<br>
+With Fluffy, users can call out their hits using commands, and the bot will automatically track all their data, including the split status,
+total damage dealt, and more. The leaders can access this data in a CSV file, which can be used for analysis and decision making.
 
+Whether you are a a guild member or guild leader, Fluffy provides an excellent tool for managing hits, tracking progress,
+and achieving your goals. In this documentation, we will cover everything you need to know to get started with 
+Fluffy including installation, setup, and usage.
+</ul>
+<h3 id="install">Installation</h3>
+The install is not as straight forward as you would think. Because different Discord servers may be set up differently, you will need to set up the bot in a manner that
+will mesh with your server's setup. Firstly, head over to the developer discord applications portal <a href="https://discord.com/developers/applications">here.</a>
+Use this website to create your bot, and set up it's permissions/trust settings, and create a link to add it to your server.
+Once you have a bot in your server, go ahead and generate a token for the bot. <strong>DO NOT SHARE THIS TOKEN WITH ANYBODY</strong>. The token is essentially your bot's
+password to be able to run. If someone gets a hold of that token, they can run whatever code they want from your bot in any server it resides in.
+<br><br>
+Next, set up any specified channels for callouts. By default, the bot's code is setup to run on the channel names "avatar", "living_abyss" and "dragon" for the respective
+bosses for the in-game bosses. After you've set these channels up, you can now follow the <a href="https://github.com/c0nD/FluffyBOT#readme">README</a> to complete
+your setup. You will need to change the IDs of certain variables in <code>final_vars.txt</code>, create a <code>guild.txt</code> file that will contain the ID
+of your discord server, and finally put the token from earlier into a file called <code>tkn.txt</code> (all in the same directory).
+<br><br>
+After this, to keep your bot running, it is reccomended to use <a href="https://pm2.keymetrics.io/">pm2</a> on a server to keep the boss running. Once you have your
+bot running, all the commands presented below with their use cases can be used to their fullest potential! Good luck, and happy hitting.
+<br><br>
+<h1 id="commands">Commands</h1>
+<hr/>                       
 <h3 id="user-commands">User Commands</h3>
 <ul>
 <li><code>/hit [damage]</code> - Hits the current boss in the text channel for <code>damage</code> amount. This <strong>does</strong> consume a <em>ticket</em> on usage. <em>It is recommended to separate damage values with <code>_</code> (123_345_789).</em></li>
