@@ -69,7 +69,7 @@
     <div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a class="nav-link" href="#crk-guild-battle-bot-usage-documentation">Discord Boss Fight Tracker Bot - User and Admin Guide</a>
+            <li class="nav-item" data-level="1"><a class="nav-link" href="#crk-guild-battle-bot-usage-documentation">Introduction/Installation</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -86,11 +86,6 @@
             </li>
                       
             <li class="nav-item" data-level="2"><a class="nav-link" href="#contribution">Contribution</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-                      
-            <li class="nav-item" data-level="2"><a class="nav-link" href="#license">Licensing</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -209,42 +204,44 @@ do <strong>not</strong> resume the hit. If you do resume the hit, use the respec
 </ul>
 <p><em>Note:</em>  <strong>most</strong> cases, you will either have this sequence: <code>/killed</code> -&gt; <code>/resume_hit [damage]</code> or simply <code>/hit [damage]</code>.
 The use case for using <code>/bonus_kill</code> will most likely be limited to players who <em>solo</em> a boss.</p>
+
+
 <h2 id="admin-usage">Admin Usage</h2>
 <hr/>
 
 <h3 id="boss-creationdeletion-in-a-channel">Boss Creation/Deletion in a Channel</h3>
-<p>In the channels specified for the bosses, you need to initialize the boss. To
-do this, you can either use <code>/create_boss</code> or <code>/insert_boss [guild] [level] [hp]</code>.
-The use case for <code>/create_boss</code> will initialize the boss to level 1 at max hp. (It is reccomended to do this one during
-tally day to initialize the bosses when they're available to be hit.) The use case for using
-<code>/insert_boss [guild] [level] [hp]</code> is if the bot went down, and you need to insert a 
-boss at a specific state. <strong><em>DO NOT USE IT TO CHANGE THE HP/LEVEL -- PLEASE USE ADMIN PREFIXED
-COMMANDS TO CHANGE THE HP OR LEVEL. USING IT TO CHANGE STATS WILL RESULT IN ALL HIT DATA BEING LOST FOR THAT BOSS.</em></strong></p>
-<p>Using <code>/delete_boss</code> will delete the boss from the channel along with all data attached to it (ie. hits).
-When a season is done, you will want to delete all bosses from their respective channels and recreate them.</p>
-<h3 id="admin-prefixed-commands">Admin Prefixed Commands + Inserting a hit</h3>
-<p>Admin prefixed commands (<code>/admin_hit</code>, <code>/admin_kill</code>) work exactly the same as their non-admin prefixed counterparts (note that
-admin_hit can also accept negative numbers to heal the boss)(<code>/hit</code> and <code>/killed</code>)
-with the exception that it will <strong>not</strong> log a hit in the hit list attached to the boss. <code>/admin_revive</code> will restore the boss
-at the previous level. If someone accidentally killed the boss, you can revive the boss and hit it down to the correct hp with
-these admin prefixed commands. If someone needs a hit or kill inserted for them that you would like to be recorded, you can insert one for them using
-<code>/insert_hit [user_id] [damage] [split]</code> or <code>/insert_kill [user_id] [ticket_used] [split]</code>. Grab their discord user id (using developer mode in discord -- right click their profile
-in the side bar and click 'Copy ID'), and insert the damage/kill
-        you'd like for them to have, as well as a <code>true/false</code> value for if the hit was split or not and if a ticket was used.</p>
+<p>To initialize a boss in the specified channels, follow these steps:</p>
+<ol>
+  <li>Use <code>/create_boss</code> to initialize the boss at level 1 with max HP.
+      <br><em>Tip: It is recommended to use this command during tally day to initialize the bosses when they're available to be hit.</em></li>
+  <li>Alternatively, use <code>/insert_boss [guild] [level] [hp]</code> to insert a boss at a specific state if the bot went down.
+      <br><strong><em>Warning: Do not use this command to change the HP or level. This will result in the loss of all hit data for that boss. Use admin-prefixed commands instead.</em></strong></li>
+</ol>
+<p>To delete a boss from a channel along with its data (hits), use <code>/delete_boss</code>. At the end of a season, delete all bosses from their respective channels and recreate them.</p>
+
+<h3 id="admin-prefixed-commands">Admin Prefixed Commands + Inserting a Hit</h3>
+<p>Admin-prefixed commands (<code>/admin_hit</code>, <code>/admin_kill</code>) work the same as their non-admin prefixed counterparts (<code>/hit</code>, <code>/killed</code>), but they do not log a hit in the hit list. Note that <code>/admin_hit</code> can also accept negative numbers to heal the boss.</p>
+<p>Follow these steps to revive a boss and adjust its HP:</p>
+<ol>
+  <li>Use <code>/admin_revive</code> to restore the boss at the previous level if it was accidentally killed.</li>
+  <li>Use admin-prefixed commands to adjust the boss's HP to the correct value.</li>
+</ol>
+<p>To insert a hit or kill for a user that should be recorded, use <code>/insert_hit [user_id] [damage] [split]</code> or <code>/insert_kill [user_id] [ticket_used] [split]</code>. You will need their Discord user ID, damage/kill values, and a <code>true/false</code> value for whether the hit was split and if a ticket was used.</p>
 <h3 id="data-aggregation">Data Aggregation</h3>
 <p><code>/send_csv [guild]</code> will send a CSV file containing sorted data from the specified <em>CRK guild</em> bosses. This will
 most likely be used at the end of each season. This data can then be sorted in
-Google Sheets or Microsoft Excel.
-<br/><br/>
-<strong>(EMERGENCY COMMANDS)</strong><br/>
-The command <code>/load_json</code> should only be used in a <em>very specific scenario</em>. This command will
-take the last loaded backup of the database and load it into the <code>boss_dictionary</code> so that you
-can call <code>/send_backup_csv [guild]</code> to get the data before the bot went down. After you use <code>/load_json</code>
-you should use <code>/send_backup_csv</code> to get the data from before the crash. (<em>Note that this
-will not set up the bosses in the channel -- you will need to use <code>/insert_boss [guild] [level] [hp]</code> in order to
-set up the current boss(es).</em>)</p>
-<h1 id="usage">Additional Information</h1>
-<hr/>
+Google Sheets or Microsoft Excel.</p>
+<br/>
+<p><strong>(EMERGENCY COMMANDS)</strong></p>
+<p>The <code>/load_json</code> command should be used only in a very specific scenario. It loads the last backup of the database into the <code>boss_dictionary</code> so that you can call <code>/send_backup_csv [guild]</code> to get the data before the bot went down. After using <code>/load_json</code>, follow these steps:</p>
+<ol>
+  <li>Use <code>/send_backup_csv</code> to get the data from before the crash.</li>
+  <li>Note that this will not set up the bosses in the channel. To set up the current boss(es), use <code>/insert_boss [guild] [level] [hp]</code>.</li>
+</ol>
+
+
+
+
 <h3 id="contribution">Contribution</h3>
 <p>If you would like to contribute to this project: we ask that you first build/run it yourself so that you have a model in which you can test your contributions.
 Please first check out the Github Issues page to see if the issue is there. If you see it, leave a comment that you want to take care of it. If the contribution
